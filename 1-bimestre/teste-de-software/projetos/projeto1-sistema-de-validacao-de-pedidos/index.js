@@ -1,0 +1,14 @@
+const validarPedido = (pedido) => {
+    if (!pedido.cliente) {
+        return false
+    }
+    if (!pedido.itens || pedido.itens.length === 0) {
+        return false
+    }
+    if (pedido.valorTotal <= 0) {
+        return false
+    }
+    return true
+}
+
+module.exports = validarPedido
