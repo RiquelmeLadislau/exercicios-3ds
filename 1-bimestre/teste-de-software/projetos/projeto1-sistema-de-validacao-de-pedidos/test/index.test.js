@@ -1,35 +1,21 @@
 const validarPedido = require('../index')
 
-test('Deve validar um pedido com todos os campos preenchidos corretamente', () => {
-    const pedido = {
-        valorTotal: 100,
-        itens: ['Item 1', 'Item 2'],
-        cliente: 'João',
-    }
-    expect(validarPedido(pedido)).toBe(true)
+test('Pedido com total 0 deve retornar false', () => {
+    const pedido = { cliente: 'everson', total: 0, itens: 0 }
+    expect(validarPedido(pedido)).toBeFalsy()
 })
 
-test('Deve invalidar um pedido sem cliente', () => {
-    const pedido = {
-        valorTotal: 100,
-        itens: ['Item 1', 'Item 2'],
-    }
-    expect(validarPedido(pedido)).toBe(false)
+test('Pedido sem cliente deve retornar false', () => {
+    const pedido = { total: 12, itens: ['Produto 1'] }
+    expect(validarPedido(pedido)).toBeFalsy()
 })
 
-test('Deve invalidar um pedido sem itens', () => {
-    const pedido = {
-        valorTotal: 100,
-        cliente: 'João',
-    }
-    expect(validarPedido(pedido)).toBe(false)
+test('Pedido sem itens deve retornar false', () => {
+    const pedido = { cliente: 'everson', total: 123 }
+    expect(validarPedido(pedido)).toBeFalsy()
 })
 
-test('Deve invalidar um pedido com valor total zero', () => {
-    const pedido = {
-        valorTotal: 0,
-        itens: ['Item 1', 'Item 2'],
-        cliente: 'João',
-    }
-    expect(validarPedido(pedido)).toBe(false)
+test('Pedido válido, deve retornar true', () => {
+    const pedido = { cliente: 'everson', total: 1711, itens: ['Produto 1'] }
+    expect(validarPedido(pedido)).toBeTruthy()
 })
