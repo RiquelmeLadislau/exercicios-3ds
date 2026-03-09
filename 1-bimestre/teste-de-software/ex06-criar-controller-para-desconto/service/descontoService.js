@@ -1,6 +1,8 @@
 function descontoService (valor){
-    if(valor >= 100){
-        valor * 1.10
+    if(valor > 100){
+        const desconto = valor * 0.1
+        return desconto -(- valor)
+        
     }
     return valor
 }
