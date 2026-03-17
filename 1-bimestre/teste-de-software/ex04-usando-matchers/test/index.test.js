@@ -1,13 +1,13 @@
-const test = require("node:test");
+test("5 é maior que 3", () => {
+  expect(5).toBeGreaterThan(3);
+});
 
-test("5 é maior que 3",() =>{
-    expect(5).toBeGreaterThan(3)
-})
-test("Que o texto teste de software tenha a palavra software",()=>{
-    const texto = "Teste de software"
-    expect(texto).toContain("software")
-})
-test("aprovado verdade",() =>{
-    const aprovado = {aprovado:true}
-    expect(aprovado).toEqual({aprovado:true})
-})
+test('O texto contém a palavra "Software"', () => {
+  expect("Teste de Software").toContain("Software");
+});
+
+test("Objeto aprovado é igual ao esperado", () => {
+  const resultado = { aprovado: true };
+
+  expect(resultado).toEqual({ aprovado: true });
+});
