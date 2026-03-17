@@ -1,11 +1,11 @@
-const calcularDesconto = require('("../service/descontoService.js')
+const calcularDesconto = require('../service/descontoService');
 
 function aplicarDesconto(req, res) {
-    const { valor } = req.body
+  const { valor } = req.body;
 
-    const valorFinal = calcularDesconto(valor)
+  const valorFinal = calcularDesconto(valor);
 
-    return res.json({ valorFinal })
+  return res.json({ valorFinal });
 }
 
-module.exports = aplicarDesconto
+module.exports = { aplicarDesconto };

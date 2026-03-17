@@ -1,10 +1,9 @@
-function descontoService (valor){
-    if(valor > 100){
-        const desconto = valor * 0.1
-        return desconto -(- valor)
-        
-    }
-    return valor
+function calcularDesconto(valor) {
+  if (valor > 100) {
+    return valor * 0.9; // 10% de desconto
+  }
+
+  return valor;
 }
 
-module.exports = descontoService 
+module.exports = calcularDesconto;
