@@ -1,36 +1,33 @@
-const { cadastrarTarefa } = require("../services/tarefaService")
-const { tarefas, limpar, listarTarefas } = require("../database/tarefaDatabase")
+const { cadastrarTarefa, totalTarefas } = require("../services/tarefaService")
+const { limpar } = require("../database/tarefaDatabase")
 
-describe('Cadastro de Tarefas', () => {
+describe('Sistema de Tarefas', () => {
 
     beforeEach(() => {
         limpar()
     })
 
-    test('Tarefa cadastrada', () => {
-        const resultado = cadastrarTarefa({ nome: 'Estudar' })
+    test('Deve cadastrar tarefa com sucesso', () => {
+        const resultado = cadastrarTarefa("Estudar Node")
 
-        expect(resultado).toBe(true);
-        expect(tarefas.length).toBe(1)
+        expect(resultado).toBe(true)
+        expect(totalTarefas()).toBe(1)
     })
 
-    test('Tarefa sem nome', () => {
-        const resultado = cadastrarTarefa({ nome: '' })
+    test('Não deve cadastrar tarefa sem descrição', () => {
+        const resultado = cadastrarTarefa("")
 
-        expect(resultado).toBe(false);
-        expect(tarefas.length).toBe(0)
+        expect(resultado).toBe(false)
+        expect(totalTarefas()).toBe(0)
     })
 
-    test('Deve retornar tarefas cadastradas', () => {
-        cadastrarTarefa({ nome: "Estudar Jest" })
-        cadastrarTarefa({ nome: "Fazer exercício" })
+    test('Deve retornar total de tarefas', () => {
+        cadastrarTarefa("Tarefa 1")
+        cadastrarTarefa("Tarefa 2")
 
-        const resultado = listarTarefas()
+        const total = totalTarefas()
 
-        expect(resultado.length).toBe(2)
-        expect(resultado).toEqual([
-            { nome: "Estudar Jest" },
-            { nome: "Fazer exercício" }
-        ]);
+        expect(total).toBe(2)
     })
+
 })
