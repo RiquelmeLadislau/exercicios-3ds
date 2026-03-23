@@ -5,10 +5,10 @@ function cadastrar(produto) {
     return false;
   }
 
-  salvarProduto(produto);
-  return true;
+  salvarProduto(produto)
+  return true
 }
 
 module.exports = {
   cadastrar
-};
+}
